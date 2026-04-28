@@ -4,11 +4,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="description"
+        content="EduReady - The ultimate learning reviewer platform to supercharge your study sessions.">
+    <title>EduReady : A Learning Reviewer Platform</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="assets/img/logo.jpg">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/index.css">
 </head>
 
 <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="#" class="logo">
+            <img src="assets/img/logo.jpg" alt="EduReady Logo">
+            EduReady
+        </a>
+        <ul class="nav-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 
+    <!-- Header / Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Master Your Studies with <span>EduReady</span></h1>
+            <p class="hero-subtitle">The ultimate learning reviewer platform designed to optimize your focus, track your
+                progress, and help you ace your exams.</p>
+            <a href="views/dashboard.php" class="btn-primary">
+                Start Reviewing
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3">
+                    </path>
+                </svg>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Features -->
+    <main id="features" class="features">
+        <div class="feature-card">
+            <div class="feature-icon">
+                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+            </div>
+            <h3>Smart Review</h3>
+            <p>Adaptive learning algorithms that focus on areas where you need the most improvement.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">
+                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+                    </path>
+                </svg>
+            </div>
+            <h3>Progress Analytics</h3>
+            <p>Track your study hours, mastery levels, and performance metrics with intuitive dashboards.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">
+                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4">
+                    </path>
+                </svg>
+            </div>
+            <h3>Custom Materials</h3>
+            <p>Upload your own notes or browse through a massive library of community-created reviewers.</p>
+        </div>
+    </main>
+
+    <!-- Double Footer -->
+    <footer>
+        <!-- Upper Footer -->
+        <div class="footer-upper">
+            <div class="footer-col">
+                <a href="#" class="logo">
+                    <img src="assets/img/logo.jpg" alt="EduReady Logo">
+                    EduReady
+                </a>
+                <p style="color: var(--text-muted); margin-top: 1rem; font-size: 0.9rem;">Empowering students worldwide
+                    with smart, efficient, and interactive learning tools.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="dashboard.php">Dashboard</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- Lower Footer -->
+        <div class="footer-lower">
+            <p>&copy; 2026 EduReady Platform. All rights reserved.</p>
+            <div class="footer-social-links">
+                <a href="#" style="color: var(--text-muted); margin-left: 1rem; text-decoration: none;">English (US)</a>
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>
