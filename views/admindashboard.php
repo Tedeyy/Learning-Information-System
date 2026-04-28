@@ -100,38 +100,7 @@ $subjects = $stmt_subj->fetchAll();
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary-color: #0056b3;
-            --bg-light: #f4f7f6;
-            --text-dark: #212529;
-            --text-muted: #6c757d;
-            --border-color: #e9ecef;
-        }
-        body { font-family: 'Inter', sans-serif; background-color: var(--bg-light); color: var(--text-dark); margin: 0; padding: 0; }
-        .admin-header { background: #fff; padding: 1.5rem 2rem; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
-        .admin-header h1 { margin: 0; font-size: 1.5rem; color: var(--primary-color); display: flex; align-items: center; gap: 0.5rem; }
-        .admin-container { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
-        .message-alert { padding: 1rem; border-radius: 6px; margin-bottom: 1.5rem; font-weight: 500; }
-        .msg-success { background: #e6fcf5; color: #0ca678; border: 1px solid #20c997; }
-        .msg-error { background: #fff5f5; color: #e03131; border: 1px solid #fa5252; }
-        .card { background: #fff; border-radius: 8px; border: 1px solid var(--border-color); box-shadow: 0 2px 8px rgba(0,0,0,0.04); margin-bottom: 2rem; overflow: hidden; }
-        .card-header { background: #f8f9fa; padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border-color); }
-        .card-header h2 { margin: 0; font-size: 1.15rem; color: #343a40; }
-        .card-body { padding: 1.5rem; }
-        .form-group { margin-bottom: 1.25rem; }
-        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 600; font-size: 0.9rem; color: #495057; }
-        .form-control { width: 100%; padding: 0.75rem; border: 1px solid #ced4da; border-radius: 4px; font-family: inherit; font-size: 0.95rem; box-sizing: border-box; transition: border-color 0.2s; }
-        .form-control:focus { outline: none; border-color: var(--primary-color); }
-        textarea.form-control { resize: vertical; }
-        .btn { display: inline-flex; align-items: center; justify-content: center; padding: 0.75rem 1.5rem; border-radius: 4px; font-weight: 500; cursor: pointer; text-decoration: none; border: none; font-size: 0.95rem; transition: background-color 0.2s; }
-        .btn-primary { background: var(--primary-color); color: #fff; }
-        .btn-primary:hover { background: #004494; }
-        .btn-secondary { background: #e9ecef; color: var(--text-dark); border: 1px solid #ced4da; }
-        .btn-secondary:hover { background: #dee2e6; }
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-        .required { color: #e03131; }
-    </style>
+    <link rel="stylesheet" href="../assets/css/admin.css">
 </head>
 <body>
 
@@ -249,13 +218,13 @@ $subjects = $stmt_subj->fetchAll();
                         <input type="text" name="title" class="form-control" required placeholder="e.g. Chapter 1 PDF Reviewer">
                     </div>
                     
-                    <div class="form-group" id="fileGroup" style="display: none; padding: 1rem; background: #f8f9fa; border: 1px dashed #ced4da; border-radius: 4px;">
+                    <div class="form-group" id="fileGroup">
                         <label>Upload File Document <span class="required">*</span></label>
-                        <input type="file" name="material_file" class="form-control" style="background: #fff;">
-                        <small style="color: var(--text-muted); display: block; margin-top: 0.5rem;">Accepted formats: PDF, DOCX, TXT. Ensure the uploads directory is writable.</small>
+                        <input type="file" name="material_file" class="form-control">
+                        <small>Accepted formats: PDF, DOCX, TXT. Ensure the uploads directory is writable.</small>
                     </div>
                     
-                    <div class="form-group" id="videoGroup" style="display: none;">
+                    <div class="form-group" id="videoGroup">
                         <label>Video URL <span class="required">*</span></label>
                         <input type="url" name="video_url" class="form-control" placeholder="https://www.youtube.com/watch?v=...">
                     </div>
@@ -268,20 +237,7 @@ $subjects = $stmt_subj->fetchAll();
                     <button type="submit" class="btn btn-primary">+ Save Learning Material</button>
                 </form>
 
-                <script>
-                    function toggleInputs() {
-                        const type = document.getElementById('materialType').value;
-                        document.getElementById('fileGroup').style.display = type === 'file' ? 'block' : 'none';
-                        document.getElementById('videoGroup').style.display = type === 'video' ? 'block' : 'none';
-                        
-                        // Toggle required attributes to prevent form submission errors
-                        document.querySelector('input[name="video_url"]').required = (type === 'video');
-                        // File input shouldn't strictly be required via HTML if they want to update, but for creation it is.
-                        document.querySelector('input[name="material_file"]').required = (type === 'file');
-                    }
-                    // Run on load
-                    document.addEventListener('DOMContentLoaded', toggleInputs);
-                </script>
+                <script src="../assets/js/admin.js"></script>
             <?php endif; ?>
         </div>
     </div>

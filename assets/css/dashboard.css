@@ -199,3 +199,8 @@ body {
 .btn-primary:hover {
     background-color: var(--primary-hover);
 }
+
+.mb-2 { margin-bottom: 2rem; }
+.empty-state { padding: 1.5rem; color: #6c757d; margin: 0; }
+.btn-outline { background-color: #f8f9fa; border: 1px solid #ced4da; color: #212529; }
+.btn-outline:hover { background-color: #e2e6ea; }

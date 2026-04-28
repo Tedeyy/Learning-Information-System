@@ -265,3 +265,6 @@ footer {
         gap: 1rem;
     }
 }
+
+.footer-link-admin { color: var(--primary-color); margin-left: 1rem; text-decoration: none; font-weight: 500; }
+.footer-link-lang { color: var(--text-muted); margin-left: 1rem; text-decoration: none; }

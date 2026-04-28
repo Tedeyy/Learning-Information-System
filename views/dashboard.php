@@ -28,7 +28,7 @@ try {
     </header>
 
     <?php if ($show_reviewers): ?>
-    <section class="content-section" style="margin-bottom: 2rem;">
+    <section class="content-section mb-2">
         <div class="section-header">
             <h2>Recent Reviewers</h2>
             <a href="reviewer.php" class="view-all">View All</a>
@@ -49,7 +49,7 @@ try {
                     </div>
                 <?php endforeach; ?>
             <?php else: ?>
-                <p style="padding: 1.5rem; color: #6c757d; margin: 0;">No reviewers available yet.</p>
+                <p class="empty-state">No reviewers available yet.</p>
             <?php endif; ?>
         </div>
     </section>
@@ -72,12 +72,12 @@ try {
                             <span class="material-meta"><?php echo htmlspecialchars(substr($fc['question'], 0, 50)) . '...'; ?></span>
                         </div>
                         <div class="material-actions">
-                            <a href="flashcards.php?id=<?php echo $fc['id']; ?>" class="btn" style="background-color: #f8f9fa; border: 1px solid #ced4da; color: #212529;">Review Card</a>
+                            <a href="flashcards.php?id=<?php echo $fc['id']; ?>" class="btn btn-outline">Review Card</a>
                         </div>
                     </div>
                 <?php endforeach; ?>
             <?php else: ?>
-                <p style="padding: 1.5rem; color: #6c757d; margin: 0;">No flashcards available yet.</p>
+                <p class="empty-state">No flashcards available yet.</p>
             <?php endif; ?>
         </div>
     </section>
