@@ -1,85 +1,48 @@
 <?php
-$action = isset($_GET['action']) ? $_GET['action'] : 'feed';
-$show_reviewers = in_array($action, ['feed', 'reviewers']);
-$show_flashcards = in_array($action, ['feed', 'flashcards_feed']);
-
 // Connect to DB using centralized configuration
 require_once __DIR__ . '/../config/database.php';
 
 try {
-    // Fetch materials
-    $stmt_mat = $pdo->query("SELECT * FROM learning_materials ORDER BY created_at DESC LIMIT 5");
-    $materials = $stmt_mat->fetchAll();
-
-    // Fetch flashcards
-    $stmt_fc = $pdo->query("SELECT * FROM flashcards ORDER BY id DESC LIMIT 5");
-    $flashcards = $stmt_fc->fetchAll();
-    
+    // Fetch subjects
+    $stmt_subj = $pdo->query("SELECT * FROM subjects ORDER BY subject_name ASC");
+    $subjects = $stmt_subj->fetchAll();
 } catch (\PDOException $e) {
-    $materials = [];
-    $flashcards = [];
+    $subjects = [];
 }
 ?>
 
 <div class="dashboard-wrapper">
     <header class="dashboard-header">
-        <h1>Welcome Back!</h1>
-        <p class="text-muted">Ready to continue your learning journey and ace your exams?</p>
+        <h1>Learning Subjects</h1>
+        <p class="text-muted">Select a subject below to view its reviewers and flashcards.</p>
     </header>
 
-    <?php if ($show_reviewers): ?>
     <section class="content-section mb-2">
         <div class="section-header">
-            <h2>Recent Reviewers</h2>
-            <a href="reviewer.php" class="view-all">View All</a>
+            <h2>Available Subjects</h2>
         </div>
-        
-        <div class="materials-list">
-            <?php if (count($materials) > 0): ?>
-                <?php foreach ($materials as $mat): ?>
-                    <div class="material-card">
-                        <div class="material-icon"><?php echo $mat['material_type'] === 'video' ? '▶️' : '📄'; ?></div>
-                        <div class="material-details">
-                            <h4 class="material-title"><?php echo htmlspecialchars($mat['title']); ?></h4>
-                            <span class="material-meta">Type: <?php echo ucfirst($mat['material_type']); ?></span>
-                        </div>
-                        <div class="material-actions">
-                            <a href="reviewer.php?id=<?php echo $mat['id']; ?>" class="btn btn-primary">Open Reviewer</a>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <p class="empty-state">No reviewers available yet.</p>
-            <?php endif; ?>
-        </div>
-    </section>
-    <?php endif; ?>
 
-    <?php if ($show_flashcards): ?>
-    <section class="content-section">
-        <div class="section-header">
-            <h2>Recent Flashcards</h2>
-            <a href="flashcards.php" class="view-all">View All</a>
-        </div>
-        
         <div class="materials-list">
-            <?php if (count($flashcards) > 0): ?>
-                <?php foreach ($flashcards as $fc): ?>
+            <?php if (count($subjects) > 0): ?>
+                <?php foreach ($subjects as $subj): ?>
                     <div class="material-card">
-                        <div class="material-icon">🗂️</div>
+                        <div class="material-icon" style="background-color: var(--primary-color); color: white;">📚</div>
                         <div class="material-details">
-                            <h4 class="material-title">Flashcard #<?php echo $fc['id']; ?></h4>
-                            <span class="material-meta"><?php echo htmlspecialchars(substr($fc['question'], 0, 50)) . '...'; ?></span>
+                            <h4 class="material-title"><?php echo htmlspecialchars($subj['subject_name']); ?></h4>
+                            <span
+                                class="material-meta"><?php echo htmlspecialchars($subj['description'] ?? 'No description provided.'); ?></span>
                         </div>
-                        <div class="material-actions">
-                            <a href="flashcards.php?id=<?php echo $fc['id']; ?>" class="btn btn-outline">Review Card</a>
+                        <div class="material-actions action-buttons">
+                            <a href="material.php?action=subject_materials&id=<?php echo $subj['id']; ?>"
+                                class="btn btn-primary btn-with-icon">Materials</a>
+                            <a href="material.php?action=subject_flashcards&id=<?php echo $subj['id']; ?>"
+                                class="btn btn-outline btn-with-icon">Flashcards</a>
                         </div>
                     </div>
                 <?php endforeach; ?>
             <?php else: ?>
-                <p class="empty-state">No flashcards available yet.</p>
+                <p class="empty-state">No subjects available yet. Please add them from the Admin Dashboard.</p>
             <?php endif; ?>
         </div>
     </section>
-    <?php endif; ?>
 </div>
