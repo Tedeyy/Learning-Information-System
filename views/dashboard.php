@@ -44,7 +44,7 @@ try {
                             <span class="material-meta">Type: <?php echo ucfirst($mat['material_type']); ?></span>
                         </div>
                         <div class="material-actions">
-                            <a href="material.php?action=view&id=<?php echo $mat['id']; ?>" class="btn btn-primary">Open Reviewer</a>
+                            <a href="reviewer.php?id=<?php echo $mat['id']; ?>" class="btn btn-primary">Open Reviewer</a>
                         </div>
                     </div>
                 <?php endforeach; ?>
@@ -72,7 +72,7 @@ try {
                             <span class="material-meta"><?php echo htmlspecialchars(substr($fc['question'], 0, 50)) . '...'; ?></span>
                         </div>
                         <div class="material-actions">
-                            <a href="material.php?action=flashcard&id=<?php echo $fc['id']; ?>" class="btn" style="background-color: #f8f9fa; border: 1px solid #ced4da; color: #212529;">Review Card</a>
+                            <a href="flashcards.php?id=<?php echo $fc['id']; ?>" class="btn" style="background-color: #f8f9fa; border: 1px solid #ced4da; color: #212529;">Review Card</a>
                         </div>
                     </div>
                 <?php endforeach; ?>
