@@ -10,7 +10,7 @@ if ($action === 'subject_materials') {
     exit;
 } elseif ($action === 'subject_flashcards') {
     $_SESSION['subject_id'] = (int)$_GET['id'];
-    header("Location: flashcards.php?start=1");
+    header("Location: flashcards.php");
     exit;
 } elseif (in_array($action, ['feed'])) {
     // 1. Show the main dashboard feed or the specific feeds

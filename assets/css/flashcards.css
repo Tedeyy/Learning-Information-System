@@ -34,6 +34,27 @@
     border: 1px solid var(--border-color);
     border-radius: 6px;
     background: #f8f9fa;
+    transition: all 0.2s ease;
+}
+.flashcard-option.interactive {
+    cursor: pointer;
+}
+.flashcard-option.interactive:hover {
+    background: #e9ecef;
+    border-color: #ced4da;
+}
+.flashcard-option.option-correct {
+    background: #e6fcf5;
+    border-color: #20c997;
+    color: #0ca678;
+}
+.flashcard-option.option-wrong {
+    background: #fff5f5;
+    border-color: #fa5252;
+    color: #e03131;
+}
+.flashcard-option.disabled {
+    pointer-events: none;
 }
 .flashcard-answer-section {
     margin-top: 3rem;
@@ -49,19 +70,19 @@
 }
 .flashcard-answer {
     display: none;
-    background: #e6fcf5;
-    border: 1px solid #20c997;
+    background: #f8f9fa;
+    border: 1px solid #ced4da;
     padding: 1.5rem;
     border-radius: 6px;
     text-align: left;
 }
 .flashcard-answer h3 {
     margin: 0 0 0.5rem 0;
-    color: #0ca678;
+    color: var(--text-dark);
 }
 .flashcard-answer p {
     margin: 0;
-    color: #2b8a3e;
+    color: var(--text-muted);
     font-size: 0.95rem;
 }
 .flashcard-back {
@@ -70,4 +91,23 @@
 .flashcard-back a {
     color: var(--text-muted);
     text-decoration: none;
+}
+/* Summary view styles */
+.summary-item {
+    text-align: left;
+    background: #f8f9fa;
+    border: 1px solid var(--border-color);
+    padding: 1.5rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+}
+.summary-item h4 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+.summary-correct {
+    border-left: 4px solid #20c997;
+}
+.summary-wrong {
+    border-left: 4px solid #fa5252;
 }
