@@ -1,21 +1,12 @@
 <?php
-// Connect to DB to fetch real feeds
-$host = 'localhost';
-$db   = 'eduready_lis_db';
-$user = 'root';
-$pass = '';
-$charset = 'utf8mb4';
+$action = isset($_GET['action']) ? $_GET['action'] : 'feed';
+$show_reviewers = in_array($action, ['feed', 'reviewers']);
+$show_flashcards = in_array($action, ['feed', 'flashcards_feed']);
 
-$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-$options = [
-    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    PDO::ATTR_EMULATE_PREPARES   => false,
-];
+// Connect to DB using centralized configuration
+require_once __DIR__ . '/../config/database.php';
 
 try {
-    $pdo = new PDO($dsn, $user, $pass, $options);
-    
     // Fetch materials
     $stmt_mat = $pdo->query("SELECT * FROM learning_materials ORDER BY created_at DESC LIMIT 5");
     $materials = $stmt_mat->fetchAll();
@@ -36,6 +27,7 @@ try {
         <p class="text-muted">Ready to continue your learning journey and ace your exams?</p>
     </header>
 
+    <?php if ($show_reviewers): ?>
     <section class="content-section" style="margin-bottom: 2rem;">
         <div class="section-header">
             <h2>Recent Reviewers</h2>
@@ -61,7 +53,9 @@ try {
             <?php endif; ?>
         </div>
     </section>
+    <?php endif; ?>
 
+    <?php if ($show_flashcards): ?>
     <section class="content-section">
         <div class="section-header">
             <h2>Recent Flashcards</h2>
@@ -87,4 +81,5 @@ try {
             <?php endif; ?>
         </div>
     </section>
+    <?php endif; ?>
 </div>

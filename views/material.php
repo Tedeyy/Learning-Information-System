@@ -4,8 +4,8 @@
 
 $action = isset($_GET['action']) ? $_GET['action'] : 'feed';
 
-if ($action === 'feed') {
-    // 1. Show the main dashboard feed
+if (in_array($action, ['feed', 'reviewers', 'flashcards_feed'])) {
+    // 1. Show the main dashboard feed or the specific feeds
     include 'content/header.php';
     include 'content/navbar.php';
     echo '<main class="app-main">';
@@ -16,24 +16,7 @@ if ($action === 'feed') {
 }
 
 // 2. If viewing a specific material or flashcard, connect to DB
-$host = 'localhost';
-$db   = 'eduready_lis_db';
-$user = 'root';
-$pass = '';
-$charset = 'utf8mb4';
-
-$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-$options = [
-    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    PDO::ATTR_EMULATE_PREPARES   => false,
-];
-
-try {
-    $pdo = new PDO($dsn, $user, $pass, $options);
-} catch (\PDOException $e) {
-    die("Database connection failed.");
-}
+require_once __DIR__ . '/../config/database.php';
 
 $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 

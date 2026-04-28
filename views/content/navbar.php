@@ -1,3 +1,6 @@
+<?php
+$current_action = isset($_GET['action']) ? $_GET['action'] : 'feed';
+?>
 <nav class="top-navbar">
     <div class="nav-container">
         <a href="../index.html" class="nav-brand">
@@ -5,9 +8,9 @@
             EduReady
         </a>
         <ul class="nav-menu">
-            <li><a href="feed.php" class="nav-link active">Dashboard</a></li>
-            <li><a href="reviewer.php" class="nav-link">Reviewers</a></li>
-            <li><a href="#" class="nav-link">Flashcards</a></li>
+            <li><a href="material.php" class="nav-link <?php echo ($current_action == 'feed') ? 'active' : ''; ?>">Dashboard</a></li>
+            <li><a href="material.php?action=reviewers" class="nav-link <?php echo ($current_action == 'reviewers') ? 'active' : ''; ?>">Reviewers</a></li>
+            <li><a href="material.php?action=flashcards_feed" class="nav-link <?php echo ($current_action == 'flashcards_feed') ? 'active' : ''; ?>">Flashcards</a></li>
         </ul>
     </div>
 </nav>

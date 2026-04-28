@@ -12,26 +12,7 @@ if ($material_id <= 0) {
 }
 
 // 2. Database Connection
-$host = 'localhost';
-$db   = 'eduready_lis_db';
-$user = 'root'; // Adjust as necessary
-$pass = '';     // Adjust as necessary
-$charset = 'utf8mb4';
-
-$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-$options = [
-    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    PDO::ATTR_EMULATE_PREPARES   => false,
-];
-
-try {
-    $pdo = new PDO($dsn, $user, $pass, $options);
-} catch (\PDOException $e) {
-    header("HTTP/1.0 500 Internal Server Error");
-    echo "Database connection failed.";
-    exit;
-}
+require_once __DIR__ . '/../config/database.php';
 
 // 3. Query the database for the file path
 $stmt = $pdo->prepare("SELECT file_url, material_type FROM learning_materials WHERE id = ?");
